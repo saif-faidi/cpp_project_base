@@ -12,9 +12,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Options
-option(USE_CONAN "Whether to use Conan." OFF)
+option(USE_CONAN "Whether to use Conan." ON)
 option(USE_VCPKG "Whether to use VCPKG." OFF)
-option(USE_CPM "Whether to use CPM." ON)
+option(USE_CPM "Whether to use CPM." OFF)
 
 option(ENABLE_WARNINGS "Enable to add warnings to a target." ON)
 option(ENABLE_WARNINGS_AS_ERRORS "Enable to treat warnings as errors." OFF)
@@ -32,7 +32,7 @@ option(ENABLE_SANITIZE_THREAD "Enable thread sanitize (Gcc/Clang only)." OFF)
 option(ENABLE_CLANG_FORMAT "Enable to add clang-format." OFF)
 option(ENABLE_CMAKE_FORMAT "Enable to add cmake-format." OFF)
 
-option(ENABLE_LTO "Enable to add Link Time Optimization." ON)
+option(ENABLE_LTO "Enable to add Link Time Optimization." OFF)
 
 # Project/Library Names
 set(EXECUTABLE_NAME "main")

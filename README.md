@@ -1,3 +1,7 @@
+- How this worked on windows for me: 
+
+
+
 # Template For C++ Projects
 
 ![C++](https://img.shields.io/badge/C%2B%2B-11%2F14%2F17%2F20%2F23-blue)

@@ -9,12 +9,19 @@
 
 #include "config.hpp"
 #include "foo.h"
+#include "kwo.h"
 
 using json = nlohmann::json;
 namespace fs = std::filesystem;
 
 int main(int argc, char **argv)
 {
+
+
+    int kwo_ret = adder_kwo(1);
+    fmt::print("kwo_ret = {}\n", kwo_ret);
+
+
     std::cout << "JSON: " << NLOHMANN_JSON_VERSION_MAJOR << "."
               << NLOHMANN_JSON_VERSION_MINOR << "."
               << NLOHMANN_JSON_VERSION_PATCH << '\n';
@@ -37,6 +44,7 @@ int main(int argc, char **argv)
         fmt::format("Welcome to {} v{}\n", project_name, project_version);
     spdlog::info(welcome_message);
 
+
     cxxopts::Options options(project_name.data(), welcome_message);
 
     options.add_options("arguments")("h,help", "Print usage")(
@@ -46,7 +54,9 @@ int main(int argc, char **argv)
         "v,verbose",
         "Verbose output",
         cxxopts::value<bool>()->default_value("false"));
+    
 
+    // called with : .\build\app\Debug\main.exe -f test.json -v
     auto result = options.parse(argc, argv);
 
     if (argc == 1 || result.count("help"))
@@ -77,17 +87,21 @@ int main(int argc, char **argv)
     auto ifs = std::ifstream{filename};
 
     if (!ifs.is_open())
-    {
+    {   std::cout << "Could not open the file return...\n";
         return 1;
     }
 
     const auto parsed_data = json::parse(ifs);
 
     if (verbose)
-    {
+    {   
         const auto name = parsed_data["name"];
-        fmt::print("Name: {}\n", name);
+        const auto surname = parsed_data["surname"];
+   
+        fmt::print<std::string>("Name: {}\n", name);
+        fmt::print<std::string>("Surname: {}\n", surname);
     }
+
 
     return 0;
 }

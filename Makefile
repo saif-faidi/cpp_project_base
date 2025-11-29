@@ -16,3 +16,10 @@ conan_r:
 	rm -rf build
 	mkdir build
 	cd build && conan install .. -s build_type=Release --output-folder=. --build missing -s compiler.cppstd=17
+
+wind: 
+	rm -rf build
+	mkdir build
+	cd build && conan install .. -s build_type=Debug --output-folder=. --build missing -s compiler.cppstd=17
+	cmake .. -G "Visual Studio 17 2022"
+	cmake --build .
