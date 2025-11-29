@@ -20,7 +20,7 @@ jobs:
         pip install jinja2 Pygments conan
         echo "$HOME/.local/bin" >> $GITHUB_PATH
         conan --version
-        
+
     - name: Conan profile detect
       run: |
         conan profile detect
@@ -35,9 +35,7 @@ jobs:
 
     - name: configure
       run: |
-        cmake -S . -B build \
-          -DCMAKE_TOOLCHAIN_FILE=build/conan_toolchain.cmake \
-          -DCMAKE_BUILD_TYPE=Debug
+        conan install .. -s build_type=Debug --output-folder=. --build missing -s compiler.cppstd=17
 
     - name: building
       run: |
