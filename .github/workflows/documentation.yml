@@ -20,8 +20,7 @@ jobs:
         pip install jinja2 Pygments conan
         echo "$HOME/.local/bin" >> $GITHUB_PATH
         conan --version
-        pip install 
-
+        
     - name: Conan profile detect
       run: |
         conan profile detect
