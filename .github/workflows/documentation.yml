@@ -32,25 +32,32 @@ jobs:
         conan --version
 
     - name: Conan profile detect
+      working-directory: ${{ github.workspace }}
       run: conan profile detect
 
     - name: Conan install
+      working-directory: ${{ github.workspace }}
       run: |
         conan install . \
           --output-folder=build \
           --build=missing
+        ls -l build/   # debug: show that toolchain exists
 
-    - name: Prepare docs
+    - name: prepare
+      working-directory: ${{ github.workspace }}
       run: make prepare
 
     - name: Configure CMake
+      working-directory: ${{ github.workspace }}
       run: |
         cmake -S . -B build \
           -DCMAKE_TOOLCHAIN_FILE=build/conan_toolchain.cmake \
           -DCMAKE_BUILD_TYPE=Debug
 
     - name: Build docs
-      run: cmake --build build --config Debug --target docs -j4
+      working-directory: ${{ github.workspace }}
+      run: |
+        cmake --build build --config Debug --target docs -j4
 
     - name: Deploy to GitHub Pages
       uses: Cecilapp/GitHub-Pages-deploy@v3
