@@ -84,7 +84,7 @@ if(USE_CPM)
 elseif(USE_CONAN OR USE_VCPKG)
     if(USE_CONAN)
         message(STATUS "Using Conan")
-        include(${CMAKE_BINARY_DIR}/conan_toolchain.cmake)
+        #include(${CMAKE_BINARY_DIR}/conan_toolchain.cmake)
     elseif(USE_VCPKG)
         message(STATUS "Using VCPKG")
         include(

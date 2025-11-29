@@ -27,7 +27,9 @@ jobs:
 
     - name: Conan install
       run: |
-        conan install . --output-folder=build --build=missing
+          cmake -S . -B build \
+          -DCMAKE_TOOLCHAIN_FILE=build/conan_toolchain.cmake \
+          -DCMAKE_BUILD_TYPE=Debug
 
     - name: prepare
       run: |

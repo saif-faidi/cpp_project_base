@@ -2,7 +2,7 @@ name: Windows CI Test
 
 on:
   push:
-    branches: [ main, master, dev ]
+    branches: [ toto ]
   pull_request:
     branches: [ main, master, dev ]
 
